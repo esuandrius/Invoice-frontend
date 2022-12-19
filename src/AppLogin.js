@@ -13,11 +13,15 @@ import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 
+import ItemsList from "./components/ItemsList";
 import InvoiceList from "./components/InvoiceList";
 import AddInvoice from "./components/AddInvoice";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
+import AddItem from "./components/AddItem";
+import AddCustomer from "./components/AddCustomer";
+import CustomersList from "./components/CustomersList";
 
 class AppLogin extends Component {
   constructor(props) {
@@ -30,6 +34,8 @@ class AppLogin extends Component {
       showAdminBoard: false,
       currentUser: undefined,
       showInvoices: false,
+      showItems: false,
+      showCustomers: false,
     };
   }
 
@@ -43,6 +49,8 @@ class AppLogin extends Component {
         showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
         showInvoices: user.roles.includes("ROLE_ADMIN", "ROLE_MODERATOR"),
+        showItems: user.roles.includes("ROLE_ADMIN", "ROLE_MODERATOR"),
+        showCustomers: user.roles.includes("ROLE_ADMIN", "ROLE_MODERATOR"),
         
       });
     }
@@ -64,17 +72,19 @@ class AppLogin extends Component {
       currentUser: undefined,
       showUserBoard: false,
       showInvoices: false,
+      showItems: false,
+      showCustomers: false,
     });
   }
 
   render() {
-    const { currentUser, showUserBoard, showModeratorBoard, showAdminBoard, showInvoices } = this.state;
+    const { currentUser, showUserBoard, showModeratorBoard, showAdminBoard, showInvoices, showItems, showCustomers } = this.state;
 
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
-            bezKoder
+            Codeacademy
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
@@ -103,6 +113,22 @@ class AppLogin extends Component {
               <li className="nav-item">
                 <Link to={"/invoices"} className="nav-link">
                   Invoices
+                </Link>
+              </li>
+            )}
+
+            {showItems && (
+              <li className="nav-item">
+                <Link to={"/items"} className="nav-link">
+                  Items
+                </Link>
+              </li>
+            )}
+
+            {showCustomers && (
+              <li className="nav-item">
+                <Link to={"/customers"} className="nav-link">
+                  Customers
                 </Link>
               </li>
             )}
@@ -159,8 +185,14 @@ class AppLogin extends Component {
             <Route path="/mod" element={<BoardModerator />} />
             <Route path="/admin" element={<BoardAdmin />} />
             <Route path="/invoices" element={<InvoiceList />}></Route>
-        <Route path="/invoices/add/" element={<AddInvoice />}></Route>
-        <Route path="/invoices/edit/:id" element={<AddInvoice />}></Route>
+            <Route path="/invoices/add/" element={<AddInvoice />}></Route>
+            <Route path="/invoices/edit/:id" element={<AddInvoice />}></Route>
+            <Route path="/items" element={<ItemsList />}></Route>
+            <Route path="/items/add/" element={<AddItem />}></Route>
+            <Route path="/items/edit/:id" element={<AddItem />}></Route>
+            <Route path="/customers" element={<CustomersList />}></Route>
+            <Route path="/customers/add/" element={<AddCustomer />}></Route>
+            <Route path="/customer/edit/:id" element={<AddCustomer />}></Route>
 
           </Routes>
         </div>

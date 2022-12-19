@@ -9,15 +9,15 @@ const getAll = () => {
   return axios.get(API_URL + 'customers', { headers: authHeader() });
 };
 const create = (data) => {
-  return httpClient.post("/customers", data);
+  return axios.post(API_URL + 'customers', data, { headers: authHeader() });
 };
 
 const get = (id) => {
-  return httpClient.get(`/customers/${id}`);
+  return axios.get(API_URL + 'customers/${id}', { headers: authHeader() });
 };
 
 const update = (data) => {
-  return httpClient.post(`/customers`, data);
+  return axios.post(API_URL + 'customers', data, { headers: authHeader() });
 };
 
 // const update = (data, id) => {
@@ -25,6 +25,6 @@ const update = (data) => {
 // };
 
 const remove = (id) => {
-  return httpClient.delete(`/customers/${id}`);
+  return axios.delete(API_URL + 'customers/${id}', { headers: authHeader() });
 };
 export default { getAll, create, get, update, remove };

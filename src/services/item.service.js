@@ -9,18 +9,18 @@ const getAll = () => {
   return axios.get(API_URL + 'items', { headers: authHeader() });
 };
 const create = (data) => {
-  return httpClient.post("/items", data);
+  return axios.post(API_URL + 'items' , data, { headers: authHeader() });
 };
 
 const get = (id) => {
-  return httpClient.get(`/items/${id}`);
+  return axios.get(API_URL + 'items/${id}', { headers: authHeader() });
 };
 
 const update = (data, id) => {
-  return httpClient.post(`/items`, data);
+  return axios.post(API_URL + 'items', data, { headers: authHeader() });
 };
 
 const remove = (id) => {
-  return httpClient.delete(`/items/${id}`);
+  return axios.delete(API_URL + 'items/${id}', { headers: authHeader() });
 };
 export default { getAll, create, get, update, remove };

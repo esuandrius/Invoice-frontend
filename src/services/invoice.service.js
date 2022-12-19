@@ -25,6 +25,6 @@ const update = (data) => {
 // };
 
 const remove = (id) => {
-  return httpClient.delete(`/invoices/${id}`);
+  return axios.delete(API_URL + 'invoices/${id}', { headers: authHeader() });
 };
 export default { getAll, create, get, update, remove };
