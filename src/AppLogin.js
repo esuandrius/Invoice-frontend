@@ -22,6 +22,7 @@ import EventBus from "./common/EventBus";
 import AddItem from "./components/AddItem";
 import AddCustomer from "./components/AddCustomer";
 import CustomersList from "./components/CustomersList";
+import InvoicePreview from "./components/InvoicePreview";
 
 class AppLogin extends Component {
   constructor(props) {
@@ -187,12 +188,13 @@ class AppLogin extends Component {
             <Route path="/invoices" element={<InvoiceList />}></Route>
             <Route path="/invoices/add/" element={<AddInvoice />}></Route>
             <Route path="/invoices/edit/:id" element={<AddInvoice />}></Route>
+            <Route path="/invoices/invoicepreview/:id" element={<InvoicePreview />}></Route>
             <Route path="/items" element={<ItemsList />}></Route>
             <Route path="/items/add/" element={<AddItem />}></Route>
             <Route path="/items/edit/:id" element={<AddItem />}></Route>
             <Route path="/customers" element={<CustomersList />}></Route>
             <Route path="/customers/add/" element={<AddCustomer />}></Route>
-            <Route path="/customer/edit/:id" element={<AddCustomer />}></Route>
+            <Route path="/customers/edit/:id" element={<AddCustomer />}></Route>
 
           </Routes>
         </div>
