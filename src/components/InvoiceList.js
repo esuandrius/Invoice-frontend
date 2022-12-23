@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import invoiceService from "../services/invoice.service";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import  { withTranslation}  from "react-i18next";
 
 const InvoiceList = () => {
   const [invoices, setInvoices] = useState([]);
@@ -34,6 +35,7 @@ const InvoiceList = () => {
       });
   };
 
+   //const {t} = this.props
   return (
     <div className="container">
       <h3>Sąskaitų sąrašas</h3>
@@ -86,4 +88,4 @@ const InvoiceList = () => {
   );
 };
 
-export default InvoiceList;
+export default withTranslation()(InvoiceList);

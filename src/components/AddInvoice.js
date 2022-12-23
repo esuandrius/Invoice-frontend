@@ -6,13 +6,13 @@ import invoiceService from "../services/invoice.service";
 import customerService from "../services/customer.service";
 import "bootstrap/dist/css/bootstrap.min.css";
 import itemService from "../services/item.service";
-//
+
 
 const AddInvoice = () => {
     const [invoiceNumber, setInvoiceNumber] = useState('');
     const [myDate, setDate] = useState('');
     const [customer, setCustomer] = useState([]);
-    const [invoiceItems, setInvoiceItems] = useState([{ item: "", quantity: ""}]);
+    const [invoiceItems, setInvoiceItems] = useState([{ item: "", quantity: "", price: ""}]);
     const navigate = useNavigate();
     const {id} = useParams();
     const [customerId, setCustomers] = useState([]);
@@ -85,7 +85,7 @@ const AddInvoice = () => {
 
 
     let addFormFields = () => {  /////////////////////
-        setInvoiceItems([...invoiceItems, { item: "", quantity: "" }])
+        setInvoiceItems([...invoiceItems, { item: "", quantity: "", price: "" }])
       }
     
     let removeFormFields = (i) => {
@@ -164,25 +164,45 @@ const AddInvoice = () => {
                                     value={element.quantity}     
                                     onChange = {e => handleChange(e.target.value, index, "quantity")}                              
                                 />
+                                <input 
+                                    type="text"
+                                    name="price"
+                                    className="form-control col-2 ml-2" 
+                                    //placeholder="Iveskite kainą" 
+                                    options={items}
+                                    getOptionLabel = {a => a.bazinekaina}
+                                    getOptionValue = {a => a}
+                                    placeholder={element.item.bazineKaina}
+                                    value={element.price}     
+                                    onChange = {e => handleChange(e.target.value, index, "price")}                              
+                                />
                                  
-                                {invoiceItems.length > 1 &&(
-                                    <button type="button"  className="btn btn-success" onClick={() => removeFormFields(index)}>Remove</button> 
+                                 {invoiceItems.length > 1 &&(
+                                    <button type="button"  className="btn btn-success ml-2" onClick={() => removeFormFields(index)}>Remove</button> 
                                 )}
                             </div>
                         )})
                     }
                 
                     <button 
-                        className="btn btn-danger" 
+                        className="btn btn-danger mt-2" 
                         type="button" 
                         onClick={() => addFormFields()}>Add
                     </button>
+                    
+                    <button onClick={(e) => saveInvoice(e)}
+                    className="btn btn-primary ml-2 mt-2">Save
+                    </button>
+                    <button onClick={() => navigate('/invoices')} className="btn btn-info ml-2 mt-2">
+                        Atgal į sąrašą
+                    </button>
+
                 </div>
 
                 <br />
                 <div>
-                    <button onClick={(e) => saveInvoice(e)}
-                    className="btn btn-primary">Save</button>
+                    {/* <button onClick={(e) => saveInvoice(e)}
+                    className="btn btn-primary">Save</button> */}
                 </div>
             </form>
             <hr/>

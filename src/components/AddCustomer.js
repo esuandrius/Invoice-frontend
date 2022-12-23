@@ -38,7 +38,7 @@ const AddCustomer = () => {
                 navigate('/customers');
             })
             .catch(error => {
-                console.log('Something went wrong', error);
+                console.log('Something went wrong customer not created', error);
             })
         }
     }

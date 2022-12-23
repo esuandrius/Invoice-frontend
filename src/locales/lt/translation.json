@@ -1,0 +1,18 @@
+{
+    "home":"Pagrindinis",
+    "adminBoard":"Administratoriaus panelė",
+    "moderatorBoard":"Moderatoriaus panelė",
+    "invoices":"Sąskaitos",
+    "items":"Prekės",
+    "customers":"Klientai",
+    "logOut":"Atsijungti",
+    "logIn":"Prisijungti",
+    "signUp":"Registracija",
+    "username":"Vartotojo vardas",
+    "email":"El paštas",
+    "password":"Slaptažodis",
+    "signup":"Sukurti",
+    "login":"Prisijungti",
+    "projectscope":"Projekto užduotis",
+    "roleDescription":"tekstas \n  Vartotojų \n rolių n aprašymas"
+}
