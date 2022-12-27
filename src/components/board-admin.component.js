@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-import UserService from "../services/user.service";
+import TestService from "../services/test.service";
 import EventBus from "../common/EventBus";
+import { t } from "i18next";
 
 export default class BoardAdmin extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class BoardAdmin extends Component {
   }
 
   componentDidMount() {
-    UserService.getAdminBoard().then(
+    TestService.getAdminBoard().then(
       response => {
         this.setState({
           content: response.data
@@ -40,7 +41,8 @@ export default class BoardAdmin extends Component {
     return (
       <div className="container">
         <header className="jumbotron">
-          <h3>{this.state.content}</h3>
+          {/* <h3>{this.state.content}</h3> */}
+          <h3>{t('adminRoleDescription')}</h3>
         </header>
       </div>
     );

@@ -6,6 +6,7 @@ import invoiceService from "../services/invoice.service";
 import customerService from "../services/customer.service";
 import "bootstrap/dist/css/bootstrap.min.css";
 import itemService from "../services/item.service";
+import { t } from "i18next";
 
 
 const AddInvoice = () => {
@@ -84,7 +85,7 @@ const AddInvoice = () => {
     },[])
 
 
-    let addFormFields = () => {  /////////////////////
+    let addFormFields = () => {  
         setInvoiceItems([...invoiceItems, { item: "", quantity: "", price: "" }])
       }
     
@@ -101,27 +102,37 @@ const AddInvoice = () => {
         setInvoiceItems(list);
      }
 
+     const filteredCustomerList = customer.filter((product) => {
+
+        return product.klientoStatusas === 'Aktyvus'; 
+      }); 
+
+    const filteredItemList = items.filter((product) => {
+          return product.statusas === 'Aktyvus';
+  
+    });
    
     return(
         <div className="container">
-            <h3>Pridėti saskaita</h3>
+            <h3>{t('addInvoice')}</h3>
             <hr/>
             <form>
-                <div className="form-group">
+                <div className="form-group ml-3">
                     <input
                        type="date"
-                       className="form-control col-4"
+                       className="form-control col-3"
                        id="date"
                        value={myDate}
                        onChange={(e) => setDate(e.target.value)}
-                       placeholder="Įveskite data"
+                       placeholder="Įveskite datą"
                     /> 
                 </div>
                 
                 <div className="form-group">
                     <Select     
+                        placeholder={t('select')}
                         value={customerId}             
-                        options={customer}
+                        options={filteredCustomerList}
                         getOptionLabel = {a => a.vardas + " " + a.pavarde}
                         getOptionValue={a => a}  
                         className=" col-4"
@@ -131,14 +142,14 @@ const AddInvoice = () => {
                     </Select>
                 </div>
                 
-                <div className="form-group">
+                <div className="form-group ml-3">
                     <input
                        type="text"
-                       className="form-control col-4"
+                       className="form-control col-3"
                        id="Invoice number"
                        value={invoiceNumber}
                        onChange={(e) => setInvoiceNumber(e.target.value)}
-                       placeholder="Įveskite sąskaitos numberį"
+                       placeholder={t('enterInvoiceNumber')}
                     />
                 </div>
 
@@ -147,9 +158,10 @@ const AddInvoice = () => {
                         return(
                             <div className="form-inline" key={index}>
                                 <Select 
+                                    placeholder={t('select')}
                                     className="col-4"
                                     name="item"
-                                    options={items}
+                                    options={filteredItemList}
                                     getOptionLabel = {a => a.pavadinimas}
                                     getOptionValue = {a => a}
                                     value={element.item}
@@ -157,12 +169,15 @@ const AddInvoice = () => {
                                 />
                             
                                 <input 
-                                    type="text"
+                                    // type="number"
+                                    inputmode="numeric"
+                                    min="10" 
                                     name="quantity"
                                     className="form-control col-4" 
-                                    placeholder="Iveskite kieki" 
+                                    placeholder={t('enterQuantity')} 
                                     value={element.quantity}     
-                                    onChange = {e => handleChange(e.target.value, index, "quantity")}                              
+                                    onChange = {e => handleChange(e.target.value, index, "quantity")}
+                                                                 
                                 />
                                 <input 
                                     type="text"
@@ -178,7 +193,7 @@ const AddInvoice = () => {
                                 />
                                  
                                  {invoiceItems.length > 1 &&(
-                                    <button type="button"  className="btn btn-success ml-2" onClick={() => removeFormFields(index)}>Remove</button> 
+                                    <button type="button"  className="btn btn-success ml-2" onClick={() => removeFormFields(index)}>{t('btnDelete')}</button> 
                                 )}
                             </div>
                         )})
@@ -187,14 +202,14 @@ const AddInvoice = () => {
                     <button 
                         className="btn btn-danger mt-2" 
                         type="button" 
-                        onClick={() => addFormFields()}>Add
+                        onClick={() => addFormFields()}>{t('btnAdd')}
                     </button>
                     
                     <button onClick={(e) => saveInvoice(e)}
-                    className="btn btn-primary ml-2 mt-2">Save
+                    className="btn btn-primary ml-2 mt-2">{t('btnSave')}
                     </button>
                     <button onClick={() => navigate('/invoices')} className="btn btn-info ml-2 mt-2">
-                        Atgal į sąrašą
+                    {t('btnBack')}
                     </button>
 
                 </div>
@@ -206,7 +221,7 @@ const AddInvoice = () => {
                 </div>
             </form>
             <hr/>
-            <Link to="/invoices">Atgal į sąrašą</Link>
+            <Link to="/invoices">{t('btnBack')}</Link>
         </div>
     )
 };

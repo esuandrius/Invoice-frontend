@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {useEffect, useState} from "react";
 import itemService from "../services/item.service";
+import { t } from "i18next";
+import Select from "react-select";
 
 const AddItem = () => {
     const [pavadinimas, setItemName] = useState('');
@@ -54,9 +56,14 @@ const AddItem = () => {
         }
     },[])
 
+    const activityOption = [
+        { value: "Aktyvus", label: "Aktyvus"},
+        { value: "Neaktyvus", label: "Neaktyvus"},
+    ];
+
     return(
         <div className="container">
-            <h3>Pridėti prekę</h3>
+            <h3>{t('addItem')}</h3>
             <hr/>
             <form>
                 <div className="form-group">
@@ -66,7 +73,7 @@ const AddItem = () => {
                         id="pavadinimas"
                         value={pavadinimas}
                         onChange={(e) => setItemName(e.target.value)}
-                        placeholder="Įveskite prekės pavadinimą"
+                        placeholder={t('enterItemName')}
                      />
                 </div>
 
@@ -77,7 +84,7 @@ const AddItem = () => {
                        id="kodas"
                        value={kodas}
                        onChange={(e) => setItemCode(e.target.value)}
-                       placeholder="Įveskite prekės kodą"
+                       placeholder={t('enterItemCode')}
                     /> 
                 </div>
 
@@ -88,7 +95,7 @@ const AddItem = () => {
                        id="aprasymas"
                        value={aprasymas}
                        onChange={(e) => setItemDescription(e.target.value)}
-                       placeholder="įveskite prekės aprašymą"
+                       placeholder={t('enterItemDescription')}
                     /> 
                 </div>
 
@@ -99,19 +106,26 @@ const AddItem = () => {
                        id="grupe"
                        value={grupe}
                        onChange={(e) => setItemGroup(e.target.value)}
-                       placeholder="įveskite grupę"
+                       placeholder={t('enterItemGroup')}
                     /> 
                 </div>
 
                 <div className="form-group">
-                    <input
+                    {/* <input
                        type="text"
                        className="form-control col-4"
                        id="statusas"
                        value={statusas}
                        onChange={(e) => setItemStatus(e.target.value)}
-                       placeholder="įveskite statusą"
-                    />
+                       placeholder={t('enterItemStatus')}
+                    /> */}
+                    <Select 
+                        className="col-4 pl-0"
+                        // id="statusas" 
+                        placeholder={t('enterItemStatus')}
+                        options={activityOption}
+                        onChange={(e) => setItemStatus(e.value)}>
+                    </Select>
                 </div>
 
                 <div className="form-group">
@@ -122,17 +136,20 @@ const AddItem = () => {
                        id="bazineKaina"
                        value={bazineKaina}
                        onChange={(e) => setBazineKaina(e.target.value)}
-                       placeholder="įveskite bazine kaina"
+                       placeholder={t('enterItemBasisPrice')}
                     /> 
                 </div>
                 <br />
+                <hr/>
                 <div>
                     <button onClick={(e) => saveItem(e)}
-                    className="btn btn-primary">Save</button>
+                    className="btn btn-primary">{t('btnSave')}</button>
+                    <button onClick={() => navigate('/items')} className="btn btn-info ml-2">
+                        {t('btnBack')}</button>
                 </div>
             </form>
             <hr/>
-            <Link to="/items">Atgal į sąrašą</Link>
+            {/* <Link to="/items">Atgal į sąrašą</Link> */}
         </div>
     )
 };

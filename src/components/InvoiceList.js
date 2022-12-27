@@ -2,11 +2,27 @@ import React, { useEffect, useState } from "react";
 import invoiceService from "../services/invoice.service";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import  { withTranslation}  from "react-i18next";
+import AuthService from "../services/auth.service";
+
+
+import {t} from "i18next"
 
 const InvoiceList = () => {
   const [invoices, setInvoices] = useState([]);
-
+  
+  const [filterInvoiceValue] = useState('All');
+  const filteredInvoiceList = invoices.filter((product) => {
+    if(filterInvoiceValue === 'Aktyvus'){
+      return product.klientoStatusas === 'Aktyvus';
+    } else if(filterInvoiceValue === 'Neaktyvus'){
+      return product.klientoStatusas === 'Neaktyvus';
+    } else {
+      return product;
+    }
+  });
+  const [searchInput, setSearchInput] = useState("");
+  const user = AuthService.getCurrentUser().roles;
+  
   useEffect(() => {
     init();
   }, []);
@@ -35,13 +51,28 @@ const InvoiceList = () => {
       });
   };
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
+  const filtered = filteredInvoiceList.filter(c => {
+    return c.customerId.vardas.toLowerCase().includes(searchInput.toLowerCase()) || c.customerId.pavarde.toLowerCase().includes(searchInput.toLowerCase());
+  }); 
    //const {t} = this.props
   return (
     <div className="container">
-      <h3>Sąskaitų sąrašas</h3>
+      <h3>{t('invoiceList')}</h3>
       <hr />
+      <input
+          className=" btn-outline-primary bg-white text-secondary btn-block btn-lg mb-2"
+          type="search"
+          placeholder={t('invoiceSearch')}
+          onChange={handleChange}
+          value={searchInput} />
+      <hr /> 
+      {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER"))}   
       <div>
-        <Link to = "/invoices/add" className="btn btn-outline-primary btn-block btn-lg mb-2">Pridėti sąskaitą</Link>
+        <Link to = "/invoices/add" className="btn btn-outline-primary btn-block btn-lg mb-2">{t('addInvoice')}</Link>
         <table
           border="1"
           cellPadding="10"
@@ -49,25 +80,25 @@ const InvoiceList = () => {
         >
           <thead className="thead-dark">
             <tr>
-              <th>Sąskaitos numeris</th>
-              <th>Sąskaitos data</th>
-              <th>Klientas</th>
-              <th>Veiksmai</th>
+              <th>{t('invoiceNumber')}</th>
+              <th>{t('invoiceDate')}</th>
+              <th>{t('customer')}</th>
+              <th>{t('actions')}</th>
             </tr>
           </thead>
           <tbody>
-            {invoices.map((invoice) => (
+            {filtered.map((invoice) => (
               <tr key={invoice.id}>
                 <td>{invoice.invoiceNumber}</td>
                 <td>{invoice.myDate}</td>
                 <td>{invoice.customerId.vardas + " " + invoice.customerId.pavarde}</td>
-                <td>
+                <td style={{textAlign:"center"}}>
                 <Link to={`/invoices/invoicepreview/${invoice.id}`} className="btn btn-outline-info mr-2">
-                    Peržiūra
+                    {t('preview')}
                   </Link>
 
                   <Link to={`/invoices/edit/${invoice.id}`} className="btn btn-outline-success">
-                    Atnaujinti
+                    {t('btnEdit')}
                   </Link>
                   <button 
                     className="btn btn-outline-danger ml-2"
@@ -75,7 +106,7 @@ const InvoiceList = () => {
                       handleDelete(invoice.id);
                     }}
                   >
-                    Ištrinti
+                    {t('btnDelete')}
                   </button>
                   
                 </td>
@@ -88,4 +119,4 @@ const InvoiceList = () => {
   );
 };
 
-export default withTranslation()(InvoiceList);
+export default InvoiceList;

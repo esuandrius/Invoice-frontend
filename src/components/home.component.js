@@ -4,6 +4,7 @@ import "../App.css";
 import UserService from "../services/user.service";
 import  { withTranslation}  from "react-i18next";
 import scope from "../images/ProjektoScope.png";
+import { t } from "i18next";
 
  class Home extends Component {
   constructor(props) {
@@ -40,10 +41,9 @@ import scope from "../images/ProjektoScope.png";
         <header className="jumbotron">
           {/* <h3>{this.state.content}</h3> */}
           <h3>{t('projectscope')}</h3>
-          <p>
-            # Admin can read/edit/delete Users
-            {t('roleDescription')}
-          </p>
+          <h5>{t('adminRoleDescription')}</h5>
+          <h5>{t('managerRoleDescription')}</h5>
+          <h5>{t('userRoleDescription')}</h5>
         </header>
         <img className="scope" src={scope} alt="Project Scope" />
       </div>
