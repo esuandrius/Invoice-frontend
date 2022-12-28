@@ -1,4 +1,3 @@
-import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 import { t } from "i18next";
 
 let FilterCustomers = (props) => {

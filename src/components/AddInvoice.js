@@ -160,11 +160,11 @@ const AddInvoice = () => {
                        placeholder={t('enterInvoiceNumber')}
                     />
                 </div>
-
-                <div className="form-block"> 
+                <hr/>
+                <div className="form-block "> 
                     {invoiceItems.map((element, index) => { 
                         return(
-                            <div className="form-inline" key={index}>
+                            <div className="form-inline mt-2" key={index}>
                                 <Select 
                                     placeholder={t('select')}
                                     className="col-4"
@@ -178,7 +178,7 @@ const AddInvoice = () => {
                             
                                 <input 
                                     // type="number"
-                                    inputmode="numeric"
+                                    inputMode="numeric"
                                     min="10" 
                                     name="quantity"
                                     className="form-control col-4" 
@@ -201,22 +201,22 @@ const AddInvoice = () => {
                                 />
                                  
                                  {invoiceItems.length > 1 &&(
-                                    <button type="button"  className="btn btn-success ml-2" onClick={() => removeFormFields(index)}>{t('btnDelete')}</button> 
+                                    <button type="button"  className="btn btn-outline-success ml-2 " onClick={() => removeFormFields(index)}>{t('btnDelete')}</button> 
                                 )}
                             </div>
                         )})
                     }
-                
+                <hr/>
                     <button 
-                        className="btn btn-danger mt-2" 
+                        className="btn btn-outline-danger mt-2" 
                         type="button" 
                         onClick={() => addFormFields()}>{t('btnAdd')}
                     </button>
                     
                     <button onClick={(e) => saveInvoice(e)}
-                    className="btn btn-primary ml-2 mt-2">{t('btnSave')}
+                    className="btn btn-outline-primary ml-2 mt-2">{t('btnSave')}
                     </button>
-                    <button onClick={() => navigate('/invoices')} className="btn btn-info ml-2 mt-2">
+                    <button onClick={() => navigate('/invoices')} className="btn btn-outline-info ml-2 mt-2">
                     {t('btnBack')}
                     </button>
 
@@ -229,7 +229,7 @@ const AddInvoice = () => {
                 </div>
             </form>
             <hr/>
-            <Link to="/invoices">{t('btnBack')}</Link>
+            {/* <Link to="/invoices">{t('btnBack')}</Link> */}
         </div>
     )
 };

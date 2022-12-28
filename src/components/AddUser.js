@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import {useEffect, useState} from "react";
 import userService from "../services/user.service";
 import Select from "react-select"
@@ -120,13 +120,13 @@ const AddUser = () => {
                        placeholder={t('enterEmail')}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group" >
                     <Select
                         value={roles}             
                         options={roleList}
                         getOptionLabel = {a => a.name}
                         getOptionValue={a => a}  
-                        className=" col-4 "
+                        className=" col-4 px-0"
                         id="roles"
                         placeholder={t('select')}
                         onChange={(e) => setRoles(e)} 
@@ -137,8 +137,8 @@ const AddUser = () => {
                 <hr/>
                 <div>
                     <button onClick={(e) => saveUser(e)}
-                    className="btn btn-primary">{t('btnSave')}</button>
-                    <button onClick={() => navigate('/users')} className="btn btn-info ml-2 ">
+                    className="btn btn-outline-primary">{t('btnSave')}</button>
+                    <button onClick={() => navigate('/users')} className="btn btn-outline-info ml-2 ">
                     {t('btnBack')}
                     </button>
                 </div>

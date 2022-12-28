@@ -98,6 +98,11 @@
     "accountNumber": "Bank Account Nr.",
     "remarks": "Remarks",
     "invoiceIssuedBy": "Invoice issued by",
-    "invoiceReceivedBy": "Invoice Received by"
-
+    "invoiceReceivedBy": "Invoice Received by",
+    "requiredField":"This field is required!",
+    "wrongMail":"This is not a valid email.",
+    "userNameLength":"The username must be between 3 and 20 characters.",
+    "nameLength":"The name must be less than 20 characters.",
+    "lastNameLength":"The last name must be less than 20 characters.",
+    "passwordLength":"The password must be between 6 and 40 characters."
 }

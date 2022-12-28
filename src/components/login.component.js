@@ -2,17 +2,15 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
 import AuthService from "../services/auth.service";
-
 import { withRouter } from '../common/with-router';
 import  { withTranslation}  from "react-i18next";
-
+import { t } from "i18next"
 const required = value => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is required!
+        {t('requiredField')}
       </div>
     );
   }
@@ -83,7 +81,7 @@ class Login extends Component {
   }
 
   render() {
-    const {t} = this.props
+    // const {t} = this.props
     return (
       <div className="col-md-12">
         <div className="card card-container">

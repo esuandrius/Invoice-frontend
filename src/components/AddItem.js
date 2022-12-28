@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import {useEffect, useState} from "react";
 import itemService from "../services/item.service";
 import { t } from "i18next";
@@ -10,7 +10,7 @@ const AddItem = () => {
     const [kodas, setItemCode] = useState('');
     const [aprasymas, setItemDescription] = useState('');
     const [grupe, setItemGroup] = useState('');
-    const [statusas, setItemStatus] = useState('');
+    const [statusas, setItemStatus] = useState(t('enterItemStatus'));
     const [bazineKaina, setBazineKaina] = useState('');
     const navigate = useNavigate();
     const {id} = useParams();
@@ -122,7 +122,7 @@ const AddItem = () => {
                     <Select 
                         className="col-4 pl-0"
                         // id="statusas" 
-                        placeholder={t('enterItemStatus')}
+                        placeholder={statusas}
                         options={activityOption}
                         onChange={(e) => setItemStatus(e.value)}>
                     </Select>
@@ -143,8 +143,8 @@ const AddItem = () => {
                 <hr/>
                 <div>
                     <button onClick={(e) => saveItem(e)}
-                    className="btn btn-primary">{t('btnSave')}</button>
-                    <button onClick={() => navigate('/items')} className="btn btn-info ml-2">
+                    className="btn btn-outline-primary">{t('btnSave')}</button>
+                    <button onClick={() => navigate('/items')} className="btn btn-outline-info ml-2">
                         {t('btnBack')}</button>
                 </div>
             </form>

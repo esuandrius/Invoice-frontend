@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import invoiceService from "../services/invoice.service";
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/invoice.css";
@@ -31,7 +31,7 @@ const InvoicePreview = () => {
       invoiceService
         .get(id)
         .then((response) => {
-          console.log("Printing Invoices data", response.data); ///////////////////////////
+          console.log("Printing Invoices data", response.data); 
           setInvoiceItems(response.data.invoiceItems);
           setCustomerId(response.data.customerId);
           setInvoice(response.data);
@@ -41,19 +41,19 @@ const InvoicePreview = () => {
           console.log("Something went wrong", error);
         });
     }
-  }, []);
+  },);
 
   let countSuma = (invoiceItems) => {
     setBendraSuma(0);
     var sumaCount = 0;
     const list = [...suma];
     invoiceItems.map(
-      (item, index) => (
+      ( items, index) => (
         (list[index] =
           invoiceItems[index].price *
           Number(invoiceItems[index].quantity)),
         setSuma(list),
-        console.log("numeris: " + list[index]), /////////
+        console.log("numeris: " + list[index]), 
         (sumaCount += list[index]),
         setBendraSuma(sumaCount.toFixed(2)),
         setBendraSumaSuPvm((sumaCount * 1.21).toFixed(2)),
@@ -117,8 +117,8 @@ const InvoicePreview = () => {
         <table className="line-items-container">
           <thead>
             <tr>
-              <th className="heading-description">{t("itemcode")}</th>
-              <th className="heading-description">{t("itemname")}</th>
+              <th className="heading-description">{t("itemCode")}</th>
+              <th className="heading-description">{t("itemName")}</th>
               <th className="heading-quantity">{t("quantity")}</th>
               <th className="heading-price">{t("price")}</th>
               <th className="heading-subtotal">{t("sum")}</th>

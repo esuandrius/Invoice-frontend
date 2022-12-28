@@ -64,7 +64,7 @@ const CustomersList = () => {
     
     <div className="container">
       <h3>{t('customerList')}</h3>
-      <hr />
+      <hr/>
       <div>
       <input
           className=" btn-outline-primary bg-white text-secondary btn-block btn-lg mb-2"

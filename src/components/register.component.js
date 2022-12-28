@@ -3,15 +3,15 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-import  { withTranslation}  from "react-i18next";
-
+// import  { withTranslation}  from "react-i18next";
+import {t} from "i18next";
 import AuthService from "../services/auth.service";
 
 const required = value => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is required!
+        {t('requiredField')}
       </div>
     );
   }
@@ -21,7 +21,7 @@ const email = value => {
   if (!isEmail(value)) {
     return (
       <div className="alert alert-danger" role="alert">
-        This is not a valid email.
+        {t('wrongMail')}
       </div>
     );
   }
@@ -31,7 +31,7 @@ const vusername = value => {
   if (value.length < 3 || value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
+        {t('userNameLength')}
       </div>
     );
   }
@@ -41,7 +41,7 @@ const vname = value => {
   if (value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
-        The name must be less than 20 characters.
+        {t('nameLength')}
       </div>
     );
   }
@@ -51,7 +51,7 @@ const vlastName = value => {
   if (value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
-        The last name must be less than 20 characters.
+        {t('lastNameLength')}
       </div>
     );
   }
@@ -62,7 +62,7 @@ const vpassword = value => {
   if (value.length < 6 || value.length > 40) {
     return (
       <div className="alert alert-danger" role="alert">
-        "The password must be between 6 and 40 characters."
+        {t('passwordLength')}
       </div>
     );
   }
@@ -161,7 +161,7 @@ const vpassword = value => {
   }
 
   render() {
-    const {t} = this.props
+    
     return (
       <div className="col-md-12">
         <div className="card card-container">
@@ -269,4 +269,4 @@ const vpassword = value => {
     );
   }
 }
-export default withTranslation()(Register);
+export default Register;

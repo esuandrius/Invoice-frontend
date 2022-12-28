@@ -12,7 +12,7 @@ const AddCustomer = () => {
     const [tipas, setType] = useState('');
     const [adresas, setAddress] = useState('');
     const [telNumeris, setPhone] = useState('');
-    const [klientoStatusas, setCustomerStatus] = useState('');
+    const [klientoStatusas, setCustomerStatus] = useState(t('select'));
     const navigate = useNavigate();
     const {id} = useParams();
     const activityOption = [
@@ -70,8 +70,6 @@ const AddCustomer = () => {
             })
         }
     },[])
-
-   
 
     return(
         <div className="container">
@@ -150,7 +148,7 @@ const AddCustomer = () => {
                         getOptionValue={a => a} 
                         id="customer"
                         // value={klientoStatusas}
-                        placeholder={t('select')}
+                        placeholder={klientoStatusas}
                         className="col-4 pl-0" 
                         options={activityOption}
                         onChange={(e) => setCustomerStatus(e.value)}
@@ -161,8 +159,8 @@ const AddCustomer = () => {
             <hr/>
                 <div>
                     <button onClick={(e) => saveCustomer(e)}
-                    className="btn btn-primary">{t('btnSave')}</button>
-                    <button onClick={() => navigate('/customers')} className="btn btn-info ml-2">
+                    className="btn btn-outline-primary">{t('btnSave')}</button>
+                    <button onClick={() => navigate('/customers')} className="btn btn-outline-info ml-2">
                         {t('btnBack')}</button>
                 </div>
             </form>

@@ -42,6 +42,13 @@ Programos kūrime dalyvavo:
             matyti vartotojų sąrašą
             pridėti/atnaujinti/ištrinti vartotojus
 
+## BackEnd 
+    prieš paleidžiant BackEnd'ą reikia sukurti duomenų bazę "invoice"
+    username: "root" pasword: "java" standartinis port:3306
+    pirmą kartą startavus BackEnd'ą automatiškai sukuriamos rolės ir 
+    pagrindinis vartotojas: "Admin", slaptažodis: "123456", vartotojui
+    priskiriama rolė "ROLE_ADMIN"
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -98,6 +98,12 @@
     "accountNumber": "Mokėjimo sąskaitos Nr.",
     "remarks": "Pastabos",
     "invoiceIssuedBy": "Sąskaitą išrašė",
-    "invoiceReceivedBy": "Sąskaitą gavo"
+    "invoiceReceivedBy": "Sąskaitą gavo",
+    "requiredField":"Šis laukas privalomas!",
+    "wrongMail":"Neteisingas el paštas",
+    "userNameLength":"Vartotojo vardas turi būti nuo 3 iki 20 simbolių",
+    "nameLength":"Vardas turi būti ne daugiau 20 simbolių",
+    "lastNameLength":"Pavardė turi būti ne daugiau 20 simbolių",
+    "passwordLength":"Slaptažodis turi būti nuo 6 iki 40 simbolių"
     
 }
