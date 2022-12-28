@@ -64,6 +64,7 @@ const ItemsList = () => {
     <div className="container">
       <h3>{t('itemsList')}</h3>
       <hr />
+      <div>
       <input
           className=" btn-outline-primary bg-white text-secondary btn-block btn-lg mb-2"
           type="search"
@@ -72,14 +73,14 @@ const ItemsList = () => {
           value={searchInput} />
           <FilterItems filterValueSelected={onFilterValueSelected}></FilterItems>
       <hr />
-      {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER"))}
-      <div>
+      {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER")) &&
+      
         <Link
           to="/items/add"
           className="btn btn-outline-primary btn-block btn-lg mb-2"
         >
           {t('addItem')}
-        </Link>
+        </Link>}
         <table
           border="1"
           cellPadding="10"
@@ -87,22 +88,24 @@ const ItemsList = () => {
         >
           <thead className="thead-dark">
             <tr>
-              <th>{t('itemName')}</th>
               <th>{t('itemCode')}</th>
+              <th>{t('itemName')}</th>
               <th>{t('itemDescription')}</th>
               <th>{t('itemGroup')}</th>
               <th>{t('itemStatus')}</th>
-              <th>{t('actions')}</th>
+              {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER")) &&
+              <th>{t('actions')}</th>}
             </tr>
           </thead>
-          <tbody>
+          <tbody >
           {filtered.map((item) => (
-              <tr key={item.id}>
-                <td>{item.pavadinimas}</td>
+              <tr key={item.id} >
                 <td>{item.kodas}</td>
-                <td>{item.aprasymas}</td>
+                <td>{item.pavadinimas}</td>
+                <td style={{textAlign:"left"}}>{item.aprasymas}</td>
                 <td>{item.grupe}</td>
-                <td>{item.statusas}</td>
+                <td style={{textAlign:"center"}}>{item.statusas}</td>
+                {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER")) &&
                 <td >
                   <Link
                     to={`/items/edit/${item.id}`}
@@ -118,7 +121,7 @@ const ItemsList = () => {
                   >
                     {t('btnDelete')}
                   </button>
-                </td>
+                </td>}
               </tr>
             ))}
           </tbody>

@@ -96,10 +96,11 @@ const InvoiceList = () => {
                 <Link to={`/invoices/invoicepreview/${invoice.id}`} className="btn btn-outline-info mr-2">
                     {t('preview')}
                   </Link>
-
+                  {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER")) &&
                   <Link to={`/invoices/edit/${invoice.id}`} className="btn btn-outline-success">
                     {t('btnEdit')}
-                  </Link>
+                  </Link>}
+                  {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER")) &&
                   <button 
                     className="btn btn-outline-danger ml-2"
                     onClick={(e) => {
@@ -107,7 +108,7 @@ const InvoiceList = () => {
                     }}
                   >
                     {t('btnDelete')}
-                  </button>
+                  </button>}
                   
                 </td>
               </tr>

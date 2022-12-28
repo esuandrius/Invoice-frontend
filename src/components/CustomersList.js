@@ -111,7 +111,7 @@ const CustomersList = () => {
                 <td>{customer.tipas}</td>
                 <td>{customer.adresas}</td>
                 <td>{customer.telNumeris}</td></>}
-                <td>{customer.klientoStatusas}</td>
+                <td style={{textAlign:"center"}}>{customer.klientoStatusas}</td>
                 {(user.includes("ROLE_ADMIN") || user.includes("ROLE_MANAGER")) &&
                 <td>
                   <Link

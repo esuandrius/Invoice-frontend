@@ -132,13 +132,6 @@ class AppLogin extends Component {
               </li>
             )}
 
-            {showInvoices && (
-              <li className="nav-item">
-                <Link to={"/invoices"} className="nav-link">
-                {t('invoices')}
-                </Link>
-              </li>
-            )}
 
             {showItems && (
               <li className="nav-item">
@@ -152,6 +145,14 @@ class AppLogin extends Component {
               <li className="nav-item">
                 <Link to={"/customers"} className="nav-link">
                 {t('customers')}
+                </Link>
+              </li>
+            )}
+
+            {showInvoices && (
+              <li className="nav-item">
+                <Link to={"/invoices"} className="nav-link">
+                {t('invoices')}
                 </Link>
               </li>
             )}

@@ -15,7 +15,10 @@ const AddCustomer = () => {
     const [klientoStatusas, setCustomerStatus] = useState('');
     const navigate = useNavigate();
     const {id} = useParams();
-
+    const activityOption = [
+        { value: "Aktyvus", label: "Aktyvus"},
+        { value: "Neaktyvus", label: "Neaktyvus"},
+    ];
  
 
     const customer = {vardas, pavarde, email, tipas, adresas, telNumeris, klientoStatusas, id};
@@ -68,11 +71,8 @@ const AddCustomer = () => {
         }
     },[])
 
-    const activityOption = [
-        { value: "Aktyvus", label: "Aktyvus"},
-        { value: "Neaktyvus", label: "Neaktyvus"},
-    ];
-    
+   
+
     return(
         <div className="container">
             <h3>{t('addCustomer')}</h3>
@@ -146,10 +146,15 @@ const AddCustomer = () => {
                 </div>
                 <div className="form-group">
                     <Select 
+                        getLabel = {a => a.value }
+                        getOptionValue={a => a} 
+                        id="customer"
+                        // value={klientoStatusas}
+                        placeholder={t('select')}
                         className="col-4 pl-0" 
-                        placeholder={t('enterCustomerStatus')} 
                         options={activityOption}
-                        onChange={(e) => setCustomerStatus(e.value)}>
+                        onChange={(e) => setCustomerStatus(e.value)}
+                    >
                     </Select>   
                 </div>
                 <br />

@@ -1,3 +1,47 @@
+# Programa sąskaitų išrašymui
+Programos kūrime dalyvavo:
+    Andrius Adomaitis
+    Augustinas Paukštė
+    Deimis Čekanauskas
+    Kristupas Markauskas
+    Laurynas Bukys
+    Linas Mackevičius
+    Mindaugas Špukas
+
+## Programos pagrindinės funkcijos
+
+### Vartotojo paskyros savarankiškas sukūrimas
+    Vartotojas gali susikurti savo paskyra. Sukūrus pagal nutylėjimą priskiriama "ROLE_USER"
+    Jei reikia, vartotojas turintis administratoriaus rolę, gali vartotojui priskirti vadybininko arba administratoriaus rolę 
+
+### Prekių sąrašas
+   Galima: 
+            matyti prekių sąrašą
+            filtruoti pagal aktyvumo kriterijų
+            ieškoti pagal pavadinimą
+            pridėti/redaguoti/ištrinti naują prekę (tik turint administratoriaus/vadybininko roles)
+
+### Klientų sąrašas
+    Galima:
+            matyti klientų sąrašą
+            filtruoti pagal aktyvumo kriterijų
+            ieškoti pagal vardą/pavardę
+            pridėti/redaguoti/ištrinti naują klientą (tik turint administratoriaus/vadybininko roles)
+
+### Sąskaitų sąrašas
+    Galima:
+            matyti sąskaitų sąrašą
+            ieškoti pagal vardą/pavardę
+            pridėti/peržiūrėti/spausdinti
+            redaguoti/ištrinti naują klientą (tik turint administratoriaus/vadybininko roles)
+    Kuriant naują sąskaitą bus rodomi tik aktyvūs klientai ir aktyvios prekės
+
+### Vartotojų sąrašas
+    Sąrašą (ir meniu) mato tik admionistratoriaus rolę turintys vartotojai
+    Galima:
+            matyti vartotojų sąrašą
+            pridėti/atnaujinti/ištrinti vartotojus
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

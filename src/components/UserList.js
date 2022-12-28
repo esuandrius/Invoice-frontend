@@ -38,7 +38,7 @@ const UsersList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container ">
       <h3>{t('userslist')}</h3>
       <hr />
       <div>
