@@ -99,6 +99,14 @@ const AddInvoice = () => {
         const value = option;
         const list = [...invoiceItems];
         list[index][name] = value;
+
+        if(option.bazineKaina != null) {
+            list[index]["price"] = option.bazineKaina;
+       }
+        if (name === "price" && value > 0) { 
+            list[index][name] = value;
+        }
+        
         setInvoiceItems(list);
      }
 

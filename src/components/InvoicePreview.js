@@ -50,7 +50,7 @@ const InvoicePreview = () => {
     invoiceItems.map(
       (item, index) => (
         (list[index] =
-          invoiceItems[index].item.bazineKaina *
+          invoiceItems[index].price *
           Number(invoiceItems[index].quantity)),
         setSuma(list),
         console.log("numeris: " + list[index]), /////////
