@@ -31,7 +31,7 @@ const InvoicePreview = () => {
       invoiceService
         .get(id)
         .then((response) => {
-          console.log("Printing Invoices data", response.data); 
+          console.log("Printing Invoices data", response.data);
           setInvoiceItems(response.data.invoiceItems);
           setCustomerId(response.data.customerId);
           setInvoice(response.data);
@@ -41,19 +41,18 @@ const InvoicePreview = () => {
           console.log("Something went wrong", error);
         });
     }
-  },);
+  });
 
   let countSuma = (invoiceItems) => {
     setBendraSuma(0);
     var sumaCount = 0;
     const list = [...suma];
     invoiceItems.map(
-      ( items, index) => (
+      (items, index) => (
         (list[index] =
-          invoiceItems[index].price *
-          Number(invoiceItems[index].quantity)),
+          invoiceItems[index].price * Number(invoiceItems[index].quantity)),
         setSuma(list),
-        console.log("numeris: " + list[index]), 
+        console.log("numeris: " + list[index]),
         (sumaCount += list[index]),
         setBendraSuma(sumaCount.toFixed(2)),
         setBendraSumaSuPvm((sumaCount * 1.21).toFixed(2)),
@@ -178,12 +177,18 @@ const InvoicePreview = () => {
           </tbody>
         </table>
         <p style={{ marginTop: "25px", fontSize: "14px" }}>{t("remarks")}: </p>
-        <p style={{ marginTop: "75px", fontSize: "18px" }}>
-          {t("invoiceIssuedBy")}: <strong>{user.name} {user.lastName}</strong>
+        <p style={{ marginTop: "75px", fontSize: "16px" }}>
+          {t("invoiceIssuedBy")}:{" "}
+          <strong>
+            {user.name} {user.lastName}
+          </strong>
         </p>
         <hr />
-        <p style={{ marginTop: "25px", fontSize: "18px" }}>
-          {t("invoiceReceivedBy")}:<strong>{customerId.vardas} {customerId.pavarde}</strong>
+        <p style={{ marginTop: "25px", fontSize: "16px" }}>
+          {t("invoiceReceivedBy")}:{" "}
+          <strong>
+            {customerId.vardas} {customerId.pavarde}
+          </strong>
         </p>
         <hr />
       </div>
