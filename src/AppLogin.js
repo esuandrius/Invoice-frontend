@@ -1,4 +1,4 @@
-import  { React, Component } from "react";
+import { React, Component } from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -28,13 +28,18 @@ import AddUser from "./components/AddUser";
 import Recover from "./components/recovery.component";
 import NotFound from "./components/NotFound";
 
-import  { withTranslation}  from "react-i18next";
+import { withTranslation } from "react-i18next";
 import LanguageSwitcher from "./languageSwitcher";
 
-
-const isAdmin = (AuthService.getCurrentUser() != null && AuthService.getCurrentUser().roles.includes("ROLE_ADMIN"))
-const isManager = (AuthService.getCurrentUser() != null && AuthService.getCurrentUser().roles.includes("ROLE_MANAGER"))
-const isUser = (AuthService.getCurrentUser() != null && AuthService.getCurrentUser().roles.includes("ROLE_USER"))
+const isAdmin =
+  AuthService.getCurrentUser() != null &&
+  AuthService.getCurrentUser().roles.includes("ROLE_ADMIN");
+const isManager =
+  AuthService.getCurrentUser() != null &&
+  AuthService.getCurrentUser().roles.includes("ROLE_MANAGER");
+const isUser =
+  AuthService.getCurrentUser() != null &&
+  AuthService.getCurrentUser().roles.includes("ROLE_USER");
 
 class AppLogin extends Component {
   constructor(props) {
@@ -53,10 +58,7 @@ class AppLogin extends Component {
     };
   }
 
-  
-
   componentDidMount() {
-    
     const user = AuthService.getCurrentUser();
 
     if (user) {
@@ -65,13 +67,22 @@ class AppLogin extends Component {
         showUserBoard: user.roles.includes("ROLE_USER"),
         showManagerBoard: user.roles.includes("ROLE_MANAGER"),
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
-        showInvoices: user.roles.includes("ROLE_ADMIN") || user.roles.includes("ROLE_USER") || user.roles.includes("ROLE_MANAGER"),       
-        showItems: user.roles.includes("ROLE_ADMIN") || user.roles.includes("ROLE_USER") || user.roles.includes("ROLE_MANAGER"),
-        showCustomers: user.roles.includes("ROLE_ADMIN") || user.roles.includes("ROLE_USER") || user.roles.includes("ROLE_MANAGER"),
+        showInvoices:
+          user.roles.includes("ROLE_ADMIN") ||
+          user.roles.includes("ROLE_USER") ||
+          user.roles.includes("ROLE_MANAGER"),
+        showItems:
+          user.roles.includes("ROLE_ADMIN") ||
+          user.roles.includes("ROLE_USER") ||
+          user.roles.includes("ROLE_MANAGER"),
+        showCustomers:
+          user.roles.includes("ROLE_ADMIN") ||
+          user.roles.includes("ROLE_USER") ||
+          user.roles.includes("ROLE_MANAGER"),
         showUsers: user.roles.includes("ROLE_ADMIN"),
       });
     }
-    
+
     EventBus.on("logout", () => {
       this.logOut();
     });
@@ -94,17 +105,23 @@ class AppLogin extends Component {
       showUsers: false,
     });
   }
-   
-  render() {
-    const { currentUser, showUserBoard, showManagerBoard, showAdminBoard, showInvoices, showItems, showCustomers, showUsers } = this.state;
-    
-    const {t} = this.props
 
-   
+  render() {
+    const {
+      currentUser,
+      showUserBoard,
+      showManagerBoard,
+      showAdminBoard,
+      showInvoices,
+      showItems,
+      showCustomers,
+      showUsers,
+    } = this.state;
+
+    const { t } = this.props;
 
     return (
       <div>
-        
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
             Codeacademy
@@ -112,14 +129,14 @@ class AppLogin extends Component {
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/home"} className="nav-link">
-                {t('home')}
+                {t("home")}
               </Link>
             </li>
 
             {showManagerBoard && (
               <li className="nav-item">
                 <Link to={"/manager"} className="nav-link">
-                   {t('managerBoard')}
+                  {t("managerBoard")}
                 </Link>
               </li>
             )}
@@ -127,16 +144,15 @@ class AppLogin extends Component {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                {t('adminBoard')}
-                </Link>                
+                  {t("adminBoard")}
+                </Link>
               </li>
             )}
-
 
             {showItems && (
               <li className="nav-item">
                 <Link to={"/items"} className="nav-link">
-                {t('items')}
+                  {t("items")}
                 </Link>
               </li>
             )}
@@ -144,7 +160,7 @@ class AppLogin extends Component {
             {showCustomers && (
               <li className="nav-item">
                 <Link to={"/customers"} className="nav-link">
-                {t('customers')}
+                  {t("customers")}
                 </Link>
               </li>
             )}
@@ -152,7 +168,7 @@ class AppLogin extends Component {
             {showInvoices && (
               <li className="nav-item">
                 <Link to={"/invoices"} className="nav-link">
-                {t('invoices')}
+                  {t("invoices")}
                 </Link>
               </li>
             )}
@@ -160,7 +176,7 @@ class AppLogin extends Component {
             {showUsers && (
               <li className="nav-item">
                 <Link to={"/users"} className="nav-link">
-                 {t('users')}
+                  {t("users")}
                 </Link>
               </li>
             )}
@@ -168,7 +184,7 @@ class AppLogin extends Component {
             {showUserBoard && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
-                {t('user')}
+                  {t("user")}
                 </Link>
               </li>
             )}
@@ -178,12 +194,13 @@ class AppLogin extends Component {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
-                  {currentUser.name} {currentUser.lastName} 
+                  {currentUser.username}
+                  {/* {currentUser.name} {currentUser.lastName} */}
                 </Link>
               </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                {t('logOut')}
+                  {t("logOut")}
                 </a>
               </li>
             </div>
@@ -191,22 +208,19 @@ class AppLogin extends Component {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
-                {t('logIn')}
+                  {t("logIn")}
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to={"/register"} className="nav-link">
-                {t('signUp')}
+                  {t("signUp")}
                 </Link>
               </li>
             </div>
           )}
-          <div >
-           
-       
-          </div>
-          <LanguageSwitcher/>
+          <div></div>
+          <LanguageSwitcher />
         </nav>
 
         <div className="container mt-3">
@@ -216,30 +230,125 @@ class AppLogin extends Component {
             <Route path="*" element={<NotFound />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={isAdmin || isManager || isUser ? <Profile /> : <Navigate to ="/login"/>} />
+            <Route
+              path="/profile"
+              element={
+                isAdmin || isManager || isUser ? (
+                  <Profile />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
 
             <Route path="/user" element={<BoardUser />} />
             <Route path="/manager" element={<BoardManager />} />
             <Route path="/admin" element={<BoardAdmin />} />
-            
-            <Route path="/invoices" element={isAdmin || isManager || isUser ? <InvoiceList /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/invoices/add/" element={isAdmin || isManager || isUser ? <AddInvoice /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/invoices/edit/:id" element={isAdmin || isManager ? <AddInvoice /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/invoices/invoicepreview/:id" element={isAdmin || isManager || isUser ? <InvoicePreview /> : <Navigate to ="/login"/>}></Route>
-            
-            <Route path="/items" element={isAdmin || isManager || isUser ? <ItemsList /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/items/add/" element={isAdmin || isManager ? <AddItem /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/items/edit/:id" element={isAdmin || isManager ? <AddItem /> : <Navigate to ="/login"/>}></Route>
 
-            <Route path="/customers" element={isAdmin || isManager || isUser ? <CustomersList /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/customers/add" element={isAdmin || isManager ? <AddCustomer /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/customers/edit/:id" element={isAdmin || isManager ? <AddCustomer /> : <Navigate to ="/login"/>}></Route>
-           
-            <Route path="/users/add/" element={isAdmin ? <AddUser /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/users/edit/:id" element={isAdmin ? <AddUser /> : <Navigate to ="/login"/>}></Route>
-            <Route path="/users" element={isAdmin ? <UserList /> : <Navigate to ="/login"/>}></Route>
+            <Route
+              path="/invoices"
+              element={
+                isAdmin || isManager || isUser ? (
+                  <InvoiceList />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            ></Route>
+            <Route
+              path="/invoices/add/"
+              element={
+                isAdmin || isManager || isUser ? (
+                  <AddInvoice />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            ></Route>
+            <Route
+              path="/invoices/edit/:id"
+              element={
+                isAdmin || isManager ? <AddInvoice /> : <Navigate to="/login" />
+              }
+            ></Route>
+            <Route
+              path="/invoices/invoicepreview/:id"
+              element={
+                isAdmin || isManager || isUser ? (
+                  <InvoicePreview />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            ></Route>
+
+            <Route
+              path="/items"
+              element={
+                isAdmin || isManager || isUser ? (
+                  <ItemsList />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            ></Route>
+            <Route
+              path="/items/add/"
+              element={
+                isAdmin || isManager ? <AddItem /> : <Navigate to="/login" />
+              }
+            ></Route>
+            <Route
+              path="/items/edit/:id"
+              element={
+                isAdmin || isManager ? <AddItem /> : <Navigate to="/login" />
+              }
+            ></Route>
+
+            <Route
+              path="/customers"
+              element={
+                isAdmin || isManager || isUser ? (
+                  <CustomersList />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            ></Route>
+            <Route
+              path="/customers/add"
+              element={
+                isAdmin || isManager ? (
+                  <AddCustomer />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            ></Route>
+            <Route
+              path="/customers/edit/:id"
+              element={
+                isAdmin || isManager ? (
+                  <AddCustomer />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            ></Route>
+
+            <Route
+              path="/users/add/"
+              element={isAdmin ? <AddUser /> : <Navigate to="/login" />}
+            ></Route>
+            <Route
+              path="/users/edit/:id"
+              element={isAdmin ? <AddUser /> : <Navigate to="/login" />}
+            ></Route>
+            <Route
+              path="/users"
+              element={isAdmin ? <UserList /> : <Navigate to="/login" />}
+            ></Route>
             <Route path="/recover" element={<Recover />}></Route>
-
           </Routes>
         </div>
 
@@ -249,4 +358,4 @@ class AppLogin extends Component {
   }
 }
 
-export default withTranslation() (AppLogin);
+export default withTranslation()(AppLogin);

@@ -180,7 +180,9 @@ const InvoicePreview = () => {
         <p style={{ marginTop: "75px", fontSize: "16px" }}>
           {t("invoiceIssuedBy")}:{" "}
           <strong>
-            {user.name} {user.lastName}
+            {" "}
+            {user.username}
+            {/* {user.name} {user.lastName} */}
           </strong>
         </p>
         <hr />
