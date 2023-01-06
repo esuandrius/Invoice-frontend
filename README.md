@@ -18,7 +18,7 @@ Mindaugas Špukas
     5. Dvi kalbos - lietuvių ir anglų
     6. JWT autentikacija ir autorizacija
     
-    ![Title](https://user-images.githubusercontent.com/111871226/210970441-5b709d73-a288-4ae0-a5d9-7310f4643432.PNG)
+    https://user-images.githubusercontent.com/111871226/210970441-5b709d73-a288-4ae0-a5d9-7310f4643432.PNG
 
 
 ### Rolės
