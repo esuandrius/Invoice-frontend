@@ -34,11 +34,11 @@ Mindaugas Špukas
 
 ### Prekių sąrašas
 
-Galima:
-matyti prekių sąrašą
-filtruoti pagal aktyvumo kriterijų
-ieškoti pagal pavadinimą
-pridėti/redaguoti/ištrinti naują prekę (tik turint administratoriaus/vadybininko roles)
+    Galima:
+            matyti prekių sąrašą
+            filtruoti pagal aktyvumo kriterijų
+            ieškoti pagal pavadinimą
+            pridėti/redaguoti/ištrinti naują prekę (tik turint administratoriaus/vadybininko roles)
 
 ### Klientų sąrašas
 
