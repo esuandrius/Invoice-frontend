@@ -12,8 +12,8 @@ Mindaugas Špukas
 ## Programos pagrindinės funkcijos
 
     1. Prekių pridėjimas/redagavimas/ištrynimas
-    2. Klientų pridėjimas/redagavimas/ištrynimasdėjimas
-    3. Sąskaitų išrašymas/redagavimas/ištrynimasdėjimas
+    2. Klientų pridėjimas/redagavimas/ištrynimas
+    3. Sąskaitų išrašymas/redagavimas/ištrynimas 
     4. Sąskaitų spausdinimas PDF formate
     5. Dvi kalbos - lietuvių ir anglų
     6. JWT autentikacija ir autorizacija
