@@ -18,7 +18,7 @@ Mindaugas Špukas
     5. Dvi kalbos - lietuvių ir anglų
     6. JWT autentikacija ir autorizacija
 
-## Rolės
+### Rolės
 
     1. Admin, gali suvesti naujus/redaguoti/ištrinti informaciją apie klientus, prekes, sąskaitas. Pridėti/atnaujinti/ištrinti vartotojus, priskirti jiems roles
     2. Manager, gali suvesti naujus/redaguoti/ištrinti informaciją apie klientus, prekes, sąskaitas.
@@ -61,7 +61,7 @@ pridėti/redaguoti/ištrinti naują prekę (tik turint administratoriaus/vadybin
             matyti vartotojų sąrašą
             pridėti/atnaujinti/ištrinti vartotojus
 
-## BackEnd
+### BackEnd
 
     prieš paleidžiant BackEnd'ą reikia sukurti duomenų bazę "invoice"
     username: "root" pasword: "java" standartinis port:3306
